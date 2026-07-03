@@ -1,0 +1,208 @@
+openapi: 3.0.3
+info:
+  title: Blink Charging Locations & Status API (BlinkMap API)
+  description: >-
+    Modeled OpenAPI for Blink Network's gated third-party integrator program
+    (marketed as the BlinkMap API), which returns Blink-compatible EV charger
+    locations, hours of operation, and live network status. Blink's current
+    developer page (https://prod.blinknetwork.com/developer.html) advertises
+    the program but does not publish a full self-serve reference; access
+    requires signing up with Blink to receive an API key plus a technical PDF
+    reference and email support. The three operations below are modeled from
+    a historical official Blink "API Map" PDF (dated January 2014,
+    BLINK+API+MAP+20140128.1.pdf) that a long-standing third-party Ruby client
+    (blink_api gem) was built against. Paths, parameter names, and response
+    fields are NOT independently re-verified against Blink's present-day
+    version - treat this document as a best-effort, sourced model rather than
+    an authoritative current reference, and confirm directly with Blink
+    before integrating.
+  version: '1.0-modeled'
+  contact:
+    name: Blink Charging
+    url: https://blinkcharging.com
+externalDocs:
+  description: Blink Developer API program page
+  url: https://prod.blinknetwork.com/developer.html
+servers:
+  - url: https://api.blinknetwork.com/map/v1
+    description: BlinkMap API (historical base path; not independently reverified)
+security:
+  - apiKeyAuth: []
+tags:
+  - name: Locations
+    description: Geo-radius search for Blink charging station locations.
+  - name: Search
+    description: Name-based search for Blink charging station locations.
+  - name: Status
+    description: Live status lookup for a single Blink charging location.
+paths:
+  /locations:
+    get:
+      operationId: findLocations
+      tags:
+        - Locations
+      summary: Find charging station locations near a point
+      description: >-
+        Returns Blink-compatible charging station locations within a
+        latitude/longitude bounding range. Modeled from the Locations
+        endpoint of the historical BlinkMap API.
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          description: Center latitude of the search area.
+          schema:
+            type: number
+            format: double
+        - name: lng
+          in: query
+          required: true
+          description: Center longitude of the search area.
+          schema:
+            type: number
+            format: double
+        - name: latd
+          in: query
+          required: true
+          description: Latitude range (degrees) around the center point.
+          schema:
+            type: number
+            format: double
+        - name: lngd
+          in: query
+          required: true
+          description: Longitude range (degrees) around the center point.
+          schema:
+            type: number
+            format: double
+      responses:
+        '200':
+          description: A list of matching charging station locations.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Location'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /search:
+    get:
+      operationId: searchLocations
+      tags:
+        - Search
+      summary: Search charging station locations by name
+      description: >-
+        Returns Blink-compatible charging station locations matching a text
+        query, scoped by a reference latitude/longitude. Modeled from the
+        Search endpoint of the historical BlinkMap API.
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: Free-text search query (e.g. a location or site name).
+          schema:
+            type: string
+        - name: lat
+          in: query
+          required: true
+          description: Reference latitude used to bias/scope results.
+          schema:
+            type: number
+            format: double
+        - name: lng
+          in: query
+          required: true
+          description: Reference longitude used to bias/scope results.
+          schema:
+            type: number
+            format: double
+      responses:
+        '200':
+          description: A list of matching charging station locations.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Location'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /status:
+    get:
+      operationId: getLocationStatus
+      tags:
+        - Status
+      summary: Get live status for a charging station location
+      description: >-
+        Returns the current details and live network status for a single
+        Blink charging station location by its numeric ID. Modeled from the
+        Status endpoint of the historical BlinkMap API.
+      parameters:
+        - name: id
+          in: query
+          required: true
+          description: Numeric Blink location identifier.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The requested charging station location and status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: No location found for the given ID.
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
+      description: >-
+        API key issued after signing up for Blink's third-party integrator
+        program. Exact transport (query parameter vs. header) is not
+        independently re-verified for the current API version.
+  schemas:
+    Location:
+      type: object
+      description: >-
+        A Blink-compatible charging station location. Field set modeled from
+        the historical BlinkMap API reference and third-party client example
+        responses; current field names may differ.
+      properties:
+        id:
+          type: integer
+          description: Numeric Blink location identifier.
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        name:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+        status:
+          type: string
+          description: >-
+            Live network status of the location's chargers (e.g. Available,
+            Charging/Busy, Unavailable). Exact enumeration is not
+            independently re-verified.
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.

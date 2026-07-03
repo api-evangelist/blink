@@ -1,0 +1,110 @@
+aid: blink
+name: Blink Charging
+review:
+  question: Does Blink Charging expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-03'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Blink's own developer-facing surfaces
+    - the gated BlinkMap API (locations/status) and the Blink Fleet
+    integration - are request/response REST over HTTPS, and the OCPI roaming
+    interface Blink runs through Hubject's Intercharge platform is also
+    REST/HTTPS per the OCPI specification. Blink's Series 7/8/9 charger
+    hardware is OCPP 2.0.1 certified, and OCPP does run over WebSocket
+    (charger-as-client connects to a CSMS-as-server) - but that WebSocket
+    protocol is authored and documented by the Open Charge Alliance, not by
+    Blink, and it is a charger-to-CSMS device protocol rather than a public
+    developer API that Blink itself documents for third parties to call. No
+    Blink-specific WebSocket endpoint, URL, or message reference is
+    published, so no AsyncAPI document was created.
+findings:
+  summary: |
+    Blink Charging does not publish a documented public WebSocket API of its
+    own. Blink operates the Blink Network of Level 2 and DC Fast EV chargers
+    (plus SemaConnect, Blue Corner, BlueLA, and Envoy brands). It runs a
+    gated "BlinkMap API" third-party integrator program (station locations,
+    hours, live network status) that requires signing up for an API key and
+    is not fully self-serve documented in public. It also offers a Blink
+    Fleet platform described as integrable "via API" for fleet charging,
+    sessions, and billing, used by partners Presto and BetterFleet, again
+    with no published technical reference. Separately, Blink's charger
+    hardware achieved OCPP 2.0.1 certification (a device-to-backend control
+    protocol standardized by the Open Charge Alliance, which can run over
+    WebSocket), and in September 2025 Blink joined Hubject's Intercharge
+    eRoaming platform as a charge point operator using the OCPI protocol (a
+    REST/HTTPS roaming interface between CPOs and eMSPs) for cross-network
+    billing and session roaming. None of Blink's own public-facing programs
+    document a WebSocket (ws:// or wss://) endpoint.
+  openSource: |
+    No open-source SDK, CLI, or reference implementation is published by
+    Blink Charging itself. A long-standing unofficial third-party Ruby
+    client (blink_api gem, github.com/conarro/blink_api, 2014) wraps the
+    BlinkMap API's Locations, Search, and Status endpoints and cites an
+    official Blink "API Map" PDF (dated January 2014) as its reference;
+    current accuracy of that historical documentation is unverified.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.blinknetwork.com/map/v1
+      documented: true
+      note: BlinkMap API (gated program). Base path and endpoint shapes sourced from a historical 2014 Blink API Map PDF via a third-party client; not independently re-verified for the current version.
+    - protocol: REST
+      scheme: https
+      documented: false
+      note: Blink Fleet API. Described by Blink as integrable "via API" for fleet partners (Presto, BetterFleet); no public base URL or reference published.
+    - protocol: REST
+      scheme: https
+      documented: false
+      note: OCPI roaming interface with Hubject's Intercharge platform (CPO role, joined September 2025). OCPI itself is a REST/HTTPS specification, but Blink does not publish its own public base URL or credentials process - integration is brokered through Hubject.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: Blink's Series 7/8/9 chargers are OCPP 2.0.1 certified. OCPP is a WebSocket-based charger-to-CSMS protocol, but it is specified by the Open Charge Alliance, not documented by Blink as a public developer API, and applies to charger-to-backend control rather than a third-party-callable Blink API.
+  endpointsConfirmedRest:
+    - GET https://api.blinknetwork.com/map/v1/locations
+    - GET https://api.blinknetwork.com/map/v1/search
+    - GET https://api.blinknetwork.com/map/v1/status
+  endpointsModeled: true
+  endpointsModeledNote: |
+    The three BlinkMap endpoints above are modeled from a historical (2014)
+    official reference and a third-party client library, not from a current
+    Blink-published API reference; treat as sourced-but-unverified. No
+    endpoint paths were fabricated for the Blink Fleet API or the OCPI
+    roaming interface - both are documented at the product/program level
+    only, since no technical reference is publicly available for either.
+sources:
+  - url: https://prod.blinknetwork.com/developer.html
+    type: Documentation
+    note: Blink's current developer-API landing page; advertises the BlinkMap API program (locations, hours, network status) and email/technical-doc support after signup. No self-serve endpoint reference is published on the page.
+  - url: https://github.com/conarro/blink_api
+    type: SourceCode
+    note: Unofficial third-party Ruby client (2014) wrapping the BlinkMap API's Locations, Search, and Status endpoints under api.blinknetwork.com/map/v1; README cites an official Blink "API Map" PDF (BLINK+API+MAP+20140128.1.pdf) as its reference.
+  - url: https://blinkcharging.com/news/blink-and-presto-announce-strategic-collaboration-to-provide-advanced-tools-for-ev-fleet-charging
+    type: PressRelease
+    note: Describes Presto integrating Blink fleet charging "via API" for fleet drivers to find, charge, and pay.
+  - url: https://theevreport.com/blink-charging-partners-with-betterfleet-for-fleet-management
+    type: PressRelease
+    note: Blink Charging and BetterFleet SaaS fleet-management partnership.
+  - url: https://blinkcharging.com/news/blink-charging-achieves-ocpp-2-0-1-certification-for-ev-chargers
+    type: PressRelease
+    note: Confirms OCPP 2.0.1 certification for Blink Series 7/8/9 charger hardware.
+  - url: https://blinkcharging.com/news/hubject-teams-with-blink-charging-to-further-expand-intercharge-network-across-north-america
+    type: PressRelease
+    note: Blink joins Hubject's Intercharge eRoaming platform as a CPO using OCPI, covering US, Canada, and Mexico.
+  - url: https://www.hubject.com/blog-posts/hubject-teams-with-blink-charging-to-further-expand-intercharge-network-across-north-america
+    type: Documentation
+    note: Hubject's account of the OCPI-based integration and standardized billing between Blink and Hubject's eMSP partners.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface is documented by Blink Charging itself.
+    Blink's own developer-facing programs (BlinkMap API, Fleet API) are REST
+    over HTTPS, and its OCPI roaming interface with Hubject is likewise
+    REST/HTTPS per the OCPI specification. Blink's OCPP 2.0.1 certification
+    covers a WebSocket-based charger-to-CSMS protocol, but that protocol is
+    authored by the Open Charge Alliance rather than by Blink, and is not a
+    public developer API Blink documents for third parties - so no AsyncAPI
+    document was created.
