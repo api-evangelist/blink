@@ -1,0 +1,29 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: blinkcharging.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 18 05:04:42 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: prod.blinknetwork.com
+  https: false
+- host: api.blinknetwork.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Feb 13 12:51:03 2027 GMT
+  hsts: null
+domains:
+- domain: blinkcharging.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: blinknetwork.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false

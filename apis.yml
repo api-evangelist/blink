@@ -106,6 +106,10 @@ apis:
     URL, credential process, or version endpoint - integration happens through
     Hubject's platform-to-platform OCPI handshake.
 common:
+- type: DomainSecurity
+  url: security/blink-domain-security.yml
+- type: Authentication
+  url: authentication/blink-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/blinkcharging
 - type: Website

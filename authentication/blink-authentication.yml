@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/blink-charging-locations-status-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: query
+  parameter: api_key
+  description: API key issued after signing up for Blink's third-party integrator program. Exact
+    transport (query parameter vs. header) is not independently re-verified for the current
+    API version.
+  sources:
+  - openapi/blink-charging-locations-status-openapi.yml
