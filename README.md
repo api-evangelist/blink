@@ -48,12 +48,6 @@ Gated third-party integrator program (marketed as the BlinkMap API) returning Bl
 - [Documentation](https://prod.blinknetwork.com/developer.html)
 - [OpenAPI](openapi/blink-charging-locations-status-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
 
-### Blink Fleet API
-
-Blink Fleet is Blink's fleet-charging management platform for organizations running electric fleets (rental, ride-hail, delivery, government, transit). Blink states the portal "can be integrated into existing platforms via API," and partners including Presto (fleet roaming/payment) and BetterFleet (fleet SaaS) integrate driver charge-session discovery, charging, and payment through it. No technical base URL, authentication model, or endpoint reference is publicly published; access is brokered through Blink's partner program rather than open self-serve signup, so this entry is modeled at the product level (vehicles/drivers, charge sessions, billing/invoicing, reservations) rather than against confirmed endpoint paths.
-
-- **Human URL:** [https://blinkcharging.com/news/blink-and-presto-announce-strategic-collaboration-to-provide-advanced-tools-for-ev-fleet-charging](https://blinkcharging.com/news/blink-and-presto-announce-strategic-collaboration-to-provide-advanced-tools-for-ev-fleet-charging)
-- **Base URL:** `https://blinkcharging.com`
 
 #### Tags
 
@@ -68,12 +62,6 @@ Blink Fleet is Blink's fleet-charging management platform for organizations runn
 - [Press Release (Presto)](https://blinkcharging.com/news/blink-and-presto-announce-strategic-collaboration-to-provide-advanced-tools-for-ev-fleet-charging)
 - [Press Release (BetterFleet)](https://theevreport.com/blink-charging-partners-with-betterfleet-for-fleet-management)
 
-### Blink Charging OCPI Roaming Interface
-
-In September 2025 Blink joined Hubject's Intercharge eRoaming platform as a charge point operator (CPO), using the industry-standard Open Charge Point Interface (OCPI) protocol so partner e-mobility service providers (eMSPs) on Hubject's hub can discover Blink stations, authorize charging, and receive standardized OCPI-based billing/CDRs across the US, Canada, and Mexico. This is a B2B roaming interface brokered through Hubject rather than a direct self-serve developer API; Blink does not itself publish a public OCPI base URL, credential process, or version endpoint - integration happens through Hubject's platform-to-platform OCPI handshake.
-
-- **Human URL:** [https://blinkcharging.com/news/hubject-teams-with-blink-charging-to-further-expand-intercharge-network-across-north-america](https://blinkcharging.com/news/hubject-teams-with-blink-charging-to-further-expand-intercharge-network-across-north-america)
-- **Base URL:** `https://blinkcharging.com`
 
 #### Tags
 
