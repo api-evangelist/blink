@@ -1,0 +1,18 @@
+{
+  "provider": "blink",
+  "sources": [
+    "blink-locations-api-openapi.yml",
+    "blink-search-api-openapi.yml",
+    "blink-status-api-openapi.yml"
+  ],
+  "outputs": [
+    "blink-locations-api-openapi.yml",
+    "blink-search-api-openapi.yml",
+    "blink-status-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
