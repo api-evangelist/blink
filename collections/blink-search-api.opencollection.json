@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blink Charging & Status API (BlinkMap API) Locations Search API",
+    "version": "1.0-modeled"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search charging station locations by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blinknetwork.com/map/v1/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Free-text search query (e.g. a location or site name)."
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Reference latitude used to bias/scope results."
+              },
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Reference longitude used to bias/scope results."
+              }
+            ]
+          },
+          "docs": "Returns Blink-compatible charging station locations matching a text query, scoped by a reference latitude/longitude. Modeled from the Search endpoint of the historical BlinkMap API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,211 @@
+{
+  "item": [
+    {
+      "id": "b568605b-9bb4-4d7e-bb62-93bfdc49be24",
+      "name": "Status",
+      "description": {
+        "content": "Live status lookup for a single Blink charging location.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a40bc849-bb44-42f3-a16d-27ab741183cc",
+          "name": "Get live status for a charging station location",
+          "request": {
+            "name": "Get live status for a charging station location",
+            "description": {
+              "content": "Returns the current details and live network status for a single Blink charging station location by its numeric ID. Modeled from the Status endpoint of the historical BlinkMap API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) Numeric Blink location identifier."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fc27c137-36fa-494c-b294-5e559a204ead",
+              "name": "The requested charging station location and status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 311,\n  \"latitude\": 3497.296813088474,\n  \"longitude\": 7291.348746035505,\n  \"name\": \"string\",\n  \"address1\": \"string\",\n  \"address2\": \"string\",\n  \"city\": \"string\",\n  \"state\": \"string\",\n  \"zip\": \"string\",\n  \"country\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ad97ed5-83aa-4be2-ab71-33c8839af859",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "76d97f6f-a9a8-4122-b821-444bd68aeb71",
+              "name": "No location found for the given ID.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blinknetwork.com/map/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "66283995-6ece-47a0-83de-54e43ae2b965",
+    "name": "Blink Charging & API (BlinkMap API) Locations Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Modeled OpenAPI for Blink Network's gated third-party integrator program (marketed as the BlinkMap API), which returns Blink-compatible EV charger locations, hours of operation, and live network status. Blink's current developer page (https://prod.blinknetwork.com/developer.html) advertises the program but does not publish a full self-serve reference; access requires signing up with Blink to receive an API key plus a technical PDF reference and email support. The three operations below are modeled from a historical official Blink \"API Map\" PDF (dated January 2014, BLINK+API+MAP+20140128.1.pdf) that a long-standing third-party Ruby client (blink_api gem) was built against. Paths, parameter names, and response fields are NOT independently re-verified against Blink's present-day version - treat this document as a best-effort, sourced model rather than an authoritative current reference, and confirm directly with Blink before integrating.\n\nContact Support:\n Name: Blink Charging",
+      "type": "text/plain"
+    }
+  }
+}

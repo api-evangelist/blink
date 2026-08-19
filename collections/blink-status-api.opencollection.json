@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blink Charging & API (BlinkMap API) Locations Status API",
+    "version": "1.0-modeled"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get live status for a charging station location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blinknetwork.com/map/v1/status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Numeric Blink location identifier."
+              }
+            ]
+          },
+          "docs": "Returns the current details and live network status for a single Blink charging station location by its numeric ID. Modeled from the Status endpoint of the historical BlinkMap API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,215 @@
+{
+  "item": [
+    {
+      "id": "4b2ed48c-fc47-4ef0-a736-d3a4cf0f5494",
+      "name": "Locations",
+      "description": {
+        "content": "Geo-radius search for Blink charging station locations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c7433890-52dc-4795-9f98-a3f4849f1278",
+          "name": "Find charging station locations near a point",
+          "request": {
+            "name": "Find charging station locations near a point",
+            "description": {
+              "content": "Returns Blink-compatible charging station locations within a latitude/longitude bounding range. Modeled from the Locations endpoint of the historical BlinkMap API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<double>",
+                  "description": "(Required) Center latitude of the search area."
+                },
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "<double>",
+                  "description": "(Required) Center longitude of the search area."
+                },
+                {
+                  "disabled": false,
+                  "key": "latd",
+                  "value": "<double>",
+                  "description": "(Required) Latitude range (degrees) around the center point."
+                },
+                {
+                  "disabled": false,
+                  "key": "lngd",
+                  "value": "<double>",
+                  "description": "(Required) Longitude range (degrees) around the center point."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "140856dc-449c-48b2-a32b-ecc0f6a7ae43",
+              "name": "A list of matching charging station locations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "latd",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lngd",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 2863,\n    \"latitude\": 3422.7335355850055,\n    \"longitude\": 8095.699480580019,\n    \"name\": \"string\",\n    \"address1\": \"string\",\n    \"address2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"country\": \"string\",\n    \"status\": \"string\"\n  },\n  {\n    \"id\": 5329,\n    \"latitude\": 6475.489633268468,\n    \"longitude\": 8686.757360682657,\n    \"name\": \"string\",\n    \"address1\": \"string\",\n    \"address2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"country\": \"string\",\n    \"status\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4258c5d9-49d0-4e99-b43a-b70adbffd6a1",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "latd",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lngd",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blinknetwork.com/map/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fb0030d9-2f98-4c91-b130-3d9f76f18d8c",
+    "name": "Blink Charging & Status API (BlinkMap API) Locations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Modeled OpenAPI for Blink Network's gated third-party integrator program (marketed as the BlinkMap API), which returns Blink-compatible EV charger locations, hours of operation, and live network status. Blink's current developer page (https://prod.blinknetwork.com/developer.html) advertises the program but does not publish a full self-serve reference; access requires signing up with Blink to receive an API key plus a technical PDF reference and email support. The three operations below are modeled from a historical official Blink \"API Map\" PDF (dated January 2014, BLINK+API+MAP+20140128.1.pdf) that a long-standing third-party Ruby client (blink_api gem) was built against. Paths, parameter names, and response fields are NOT independently re-verified against Blink's present-day version - treat this document as a best-effort, sourced model rather than an authoritative current reference, and confirm directly with Blink before integrating.\n\nContact Support:\n Name: Blink Charging",
+      "type": "text/plain"
+    }
+  }
+}
