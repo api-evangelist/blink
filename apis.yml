@@ -37,6 +37,15 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/blink.png
 tags:
 - EV Charging
+- Electric Vehicles
+- Charging Stations
+- OCPI
+- OCPP
+- Fleet Management
+- Roaming
+- DC Fast Charging
+tags_raw:
+- EV Charging
 - Electric Vehicle
 - Charging Stations
 - OCPI
@@ -54,6 +63,8 @@ apis:
   humanURL: https://prod.blinknetwork.com/developer.html
   baseURL: https://api.blinknetwork.com/map/v1
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
