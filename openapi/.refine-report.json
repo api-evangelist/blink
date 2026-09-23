@@ -1,9 +1,7 @@
 {
   "provider": "blink",
   "sources": [
-    "blink-locations-api-openapi.yml",
-    "blink-search-api-openapi.yml",
-    "blink-status-api-openapi.yml"
+    "_original/blink-charging-locations-status-openapi.yml"
   ],
   "outputs": [
     "blink-locations-api-openapi.yml",
@@ -13,6 +11,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "blink-charging-locations-status-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "blink-locations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "blink-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "blink-status-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

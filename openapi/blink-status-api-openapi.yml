@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blink Charging & API (BlinkMap API) Locations Status API
-  description: Modeled OpenAPI for Blink Network's gated third-party integrator program (marketed as the BlinkMap API), which returns Blink-compatible EV charger locations, hours of operation, and live network status. Blink's current developer page (https://prod.blinknetwork.com/developer.html) advertises the program but does not publish a full self-serve reference; access requires signing up with Blink to receive an API key plus a technical PDF reference and email support. The three operations below are modeled from a historical official Blink "API Map" PDF (dated January 2014, BLINK+API+MAP+20140128.1.pdf) that a long-standing third-party Ruby client (blink_api gem) was built against. Paths, parameter names, and response fields are NOT independently re-verified against Blink's present-day version - treat this document as a best-effort, sourced model rather than an authoritative current reference, and confirm directly with Blink before integrating.
+  title: Blink Charging Locations & API (BlinkMap API) Status API
+  description: Modeled OpenAPI for Blink Network's gated third-party integrator program (marketed as the BlinkMap API), which returns Blink-compatible EV charger locations, hours of operation, and live network status.
   version: 1.0-modeled
   contact:
     name: Blink Charging
@@ -41,9 +41,6 @@ paths:
         '404':
           description: No location found for the given ID.
 components:
-  responses:
-    Unauthorized:
-      description: Missing or invalid API key.
   schemas:
     Location:
       type: object
@@ -75,6 +72,9 @@ components:
         status:
           type: string
           description: Live network status of the location's chargers (e.g. Available, Charging/Busy, Unavailable). Exact enumeration is not independently re-verified.
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
   securitySchemes:
     apiKeyAuth:
       type: apiKey
