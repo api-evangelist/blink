@@ -1,0 +1,33 @@
+edges:
+- partner_name: OpenADR
+  partner: null
+  type: contract
+  channel: network-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://products.openadr.org/
+  contract_reference:
+    register: OpenADR Alliance certified product database
+    spec_file: null
+    role: certified-product
+    registered_name: Blink Charging
+    matched_domain: blinkcharging.com
+    certified_products:
+    - product: Blinknetwork.com
+      type: VEN (client)
+      lapsed: false
+      profile: 2.0b
+      page: https://products.openadr.org/product/blink-charging-blinknetwork-com/
+    - product: Blink Charging Co (Certification no longer maintained)
+      type: VEN (client)
+      lapsed: true
+      profile: 2.0b
+      page: https://products.openadr.org/product/blinkcharging/
+    profiles:
+    - 2.0b
+    detected_by: sweep-energy.py
+    detected: '2026-10-13'
+generated: '2026-10-13'
+method: searched
+checked:
+- https://products.openadr.org/
