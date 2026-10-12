@@ -27,6 +27,16 @@ edges:
     - 2.0b
     detected_by: sweep-energy.py
     detected: '2026-10-13'
+- partner_name: openchargemap
+  partner: openchargemap
+  partner_match: aggregator
+  channel: partner-built
+  direction: partner-built
+  type: claimed
+  relationship: endpoint-coverage
+  evidence: https://openchargemap.org/site/poi?operatorid=9
+  detected_by: sweep-automotive.py
+  detected: '2026-10-13'
 generated: '2026-10-13'
 method: searched
 checked:
