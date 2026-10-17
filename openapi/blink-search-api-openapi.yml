@@ -55,6 +55,9 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
   schemas:
     Location:
       type: object
@@ -86,9 +89,6 @@ components:
         status:
           type: string
           description: Live network status of the location's chargers (e.g. Available, Charging/Busy, Unavailable). Exact enumeration is not independently re-verified.
-  responses:
-    Unauthorized:
-      description: Missing or invalid API key.
   securitySchemes:
     apiKeyAuth:
       type: apiKey
