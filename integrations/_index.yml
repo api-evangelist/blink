@@ -45,3 +45,64 @@
   relationship: endpoint-coverage
   status: not-a-workflow
   arazzo: null
+- slug: blink-open-charge-alliance-ocpp-certification
+  label: Open Charge Alliance (OCPP certification)
+  partner_name: Open Charge Alliance (OCPP certification)
+  category: OCPP certified charging products
+  type: register
+  channel: standard-directory
+  evidence: https://openchargealliance.org/participants/blinkcharging/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Open Charge Alliance certified products (openchargealliance.org/certified-companies/)
+    standard: OCPP (Open Charge Point Protocol)
+    spec_file: null
+    role: ocpp-certified-vendor
+    registered_name: Blink Charging
+    register_id: OCA.0016.0612.CS
+    register_country: United States
+    matched_domain: blinkcharging.com
+    matched_by: domain
+    certified_products:
+    - product: OCPP certified Charging Station
+      product_type: Charging Station
+      ocpp_versions:
+      - OCPP 1.6
+      - OCPP 2.0.1
+      lapsed: false
+    certificates_active: 4
+    signal_note: certified_products = one entry per OCPP product type, never per certificate, model or version;
+      lapsed only when every certificate of the product type is on the OCA withdrawn list (the register does not
+      lapse a certificate when its OCPP version is superseded). Certificate counts are context, never counted
+    detected_by: sweep-ev-charging.py
+    detected: '2026-10-20'
+    identity: wikidata Q62065645 'Blink' P856 https://www.blinkcharging.com/
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  status: not-a-workflow
+  arazzo: null
+- slug: blink-charin-e-v-charging-interface-initiative
+  label: CharIN e.V. (Charging Interface Initiative)
+  partner_name: CharIN e.V. (Charging Interface Initiative)
+  category: charging-interface standards association membership
+  type: register
+  channel: standard-directory
+  evidence: https://www.charin.global/community/blink-charging-company
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: CharIN e.V. members (charin.global/community, membership:core + membership:regular)
+    standard: CCS / MCS / ISO 15118 (Plug & Charge)
+    spec_file: null
+    role: charin-member
+    registered_name: Blink Charging Company
+    register_id: https://www.charin.global/community/blink-charging-company
+    partner_tier: regular
+    member_since: null
+    matched_domain: blinkcharging.com
+    matched_by: domain
+    signal_note: 'participation only: association membership; tier is context, never counted'
+    detected_by: sweep-ev-charging.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
