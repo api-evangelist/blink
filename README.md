@@ -1,4 +1,4 @@
-# Blink Charging (blink)
+# Blink Charging
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,94 +64,103 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Blink Charging Co. (Nasdaq: BLNK) operates the Blink Network of Level 2 and DC Fast electric vehicle chargers across North America and Europe, alongside brands acquired via SemaConnect, Blue Corner, BlueLA, and Envoy. Blink's charger hardware (Series 7/8/9) is OCPP 2.0.1 certified for CSMS interoperability, and in September 2025 Blink joined Hubject's Intercharge eRoaming platform as a charge point operator using the OCPI protocol so third-party e-mobility service providers can route drivers and billing to Blink stations. Blink also runs a gated BlinkMap API developer program (station locations, hours, and live network status) and a Blink Fleet platform that partners such as Presto and BetterFleet integrate with via API for fleet charging, sessions, and billing.
+Blink Charging Co. (Nasdaq BLNK) operates the Blink Network of Level 2 and DC Fast electric vehicle chargers across North America and Europe, alongside brands acquired via SemaConnect, Blue Corner, BlueLA, and Envoy. Blink's charger hardware (Series 7/8/9) is OCPP 2.0.1 certified for CSMS interoperability, and in 2025 Blink joined Hubject's Intercharge eRoaming platform as a charge point operator using the OCPI protocol so third-party e-mobility service providers can route drivers and billing to Blink stations. Blink also runs a gated BlinkMap API developer program (station locations, hours, and live network status) and a Blink Fleet platform that partners such as Presto and BetterFleet integrate with via API for fleet charging, sessions, and billing. None of these programs currently publish a full public self-serve API reference; access requires signing up directly with Blink.
 
-**Access model:** None of Blink's programs currently publish a full public self-serve API reference. The BlinkMap API requires signing up directly with Blink for an API key, technical documentation, and email support. The Blink Fleet API is accessed through Blink's partner program (as used by Presto and BetterFleet), not open signup. The OCPI roaming interface is a B2B integration brokered through Hubject rather than a Blink-hosted public endpoint. This entry documents the real, named programs and standards Blink participates in, honestly modeling endpoint shapes only where a sourced historical reference exists (the BlinkMap API), and describing the Fleet and OCPI surfaces at the product/program level without fabricating unconfirmed technical details.
+**Areas:** EV Charging · Electric Vehicles · Charging Stations · OCPI · OCPP · Fleet Management · Roaming · DC Fast Charging
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/blink/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/blink/refs/heads/main/apis.yml)
+## Blink Charging on APIs.io
 
-## Tags
+Everything profiled for Blink Charging is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/blink/](https://apis.io/providers/blink/)** — or go straight to one of the APIs or properties below.
 
-- EV Charging
-- Electric Vehicle
-- Charging Stations
-- OCPI
-- OCPP
-- Fleet Management
-- Roaming
-- DC Fast Charging
+### APIs (3)
 
-## Timestamps
+- [Blink Charging Locations API](https://apis.io/apis/blink/blink-locations-api/) — Geo-radius search for Blink charging station locations.
+- [Blink Charging Search API](https://apis.io/apis/blink/blink-search-api/) — Name-based search for Blink charging station locations.
+- [Blink Charging Status API](https://apis.io/apis/blink/blink-status-api/) — Live status lookup for a single Blink charging location.
 
-- **Created:** 2026-07-03
-- **Modified:** 2026-07-03
+### Published properties
 
-## Industry Standards
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **OCPP 2.0.1** — Blink's Series 7/8/9 charger hardware is certified against Open Charge Point Protocol 2.0.1, a device-to-backend (charger-to-CSMS) control protocol authored by the Open Charge Alliance. OCPP runs over WebSocket, but it is a hardware interoperability standard rather than a Blink-published developer API.
-- **OCPI** — Since September 2025, Blink is a charge point operator (CPO) on Hubject's Intercharge eRoaming platform, using the Open Charge Point Interface protocol (REST/HTTPS) for standardized session roaming and billing/CDR exchange with e-mobility service providers (eMSPs) across the US, Canada, and Mexico.
+#### Agentic access (1)
 
-## APIs
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### Blink Charging Locations & Status API
+- [Blink Agentic Access](https://apis.io/agentic-access/blink/blink-agentic-access/)
 
-Gated third-party integrator program (marketed as the BlinkMap API) returning Blink-compatible charging station locations, hours of operation, and live network status - station map pins reflect Available / Charging / Unavailable states. Signing up with Blink provides an API key plus technical reference and email support; a public self-serve API reference is not currently published. The endpoint shapes modeled here (geo-radius Locations search, name-based Search, and per-location Status lookup) come from a historical official Blink "API Map" PDF (dated January 2014) referenced by a long-standing third-party Ruby client library; current field names and paths are not independently re-verified against Blink's present-day version and should be confirmed with Blink directly before integration.
+#### Collections (3)
 
-- **Human URL:** [https://prod.blinknetwork.com/developer.html](https://prod.blinknetwork.com/developer.html)
-- **Base URL:** `https://api.blinknetwork.com/map/v1`
+Postman and Open Collection request collections.
 
-#### Tags
+- [Blink Charging & Status API (BlinkMap API) Locations API](https://apis.io/collections/blink/open-blink-locations-api/)
+- [Blink Charging & Status API (BlinkMap API) Locations Search API](https://apis.io/collections/blink/open-blink-search-api/)
+- [Blink Charging & API (BlinkMap API) Locations Status API](https://apis.io/collections/blink/open-blink-status-api/)
 
-- Charging Stations
-- Locations
-- Status
-- BlinkMap
+#### Security (2)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://prod.blinknetwork.com/developer.html)
-- [OpenAPI](openapi/blink-charging-locations-status-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Blink Authentication](https://apis.io/security/blink/blink-authentication/)
+- [Blink Domain Security](https://apis.io/security/blink/blink-domain-security/)
 
+## Where to find this API
 
-#### Tags
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- Fleet
-- Sessions
-- Billing
-- Reservations
-- Partner Integration
-
-#### Properties
-
-- [Press Release (Presto)](https://blinkcharging.com/news/blink-and-presto-announce-strategic-collaboration-to-provide-advanced-tools-for-ev-fleet-charging)
-- [Press Release (BetterFleet)](https://theevreport.com/blink-charging-partners-with-betterfleet-for-fleet-management)
-
-
-#### Tags
-
-- OCPI
-- Roaming
-- eMSP
-- Hubject
-- Intercharge
-
-#### Properties
-
-- [Press Release](https://blinkcharging.com/news/hubject-teams-with-blink-charging-to-further-expand-intercharge-network-across-north-america)
-- [Documentation (Hubject)](https://www.hubject.com/blog-posts/hubject-teams-with-blink-charging-to-further-expand-intercharge-network-across-north-america)
-
-## Pricing
-
-Blink does not publish pricing for any of its developer/partner API programs (BlinkMap, Fleet, OCPI) - access to each is negotiated directly with Blink or its roaming/fleet partners. Driver-facing charging session pricing (unrelated to API access) is set per station by the site host and billed per kWh where regulations allow or per minute otherwise, varying by charger power level (Level 2 vs. DC Fast) and membership tier; there is no published flat national rate.
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/blinkcharging)
 - [Website](https://blinkcharging.com)
-- [GitHub Organization](https://github.com/blinkcharging)
 - [Documentation](https://prod.blinknetwork.com/developer.html)
+- [Blog](https://blinkcharging.com/blog)
+- [GitHub](https://github.com/blinkcharging)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 9.3** — minimal · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 67.0 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 0.0 |
+
+**Agent readiness 20.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.0** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/blink/](https://apis.io/providers/blink/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Blink Charging: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/blink/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
